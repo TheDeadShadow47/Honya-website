@@ -1,6 +1,6 @@
 [build]
   command = "bun install --frozen-lockfile && bun run build"
-  publish = ".output/dist"
+  publish = ".output/public"
 
 [build.environment]
   NITRO_PRESET = "netlify"
