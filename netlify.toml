@@ -1,0 +1,9 @@
+[build]
+  command = "bun install --frozen-lockfile && bun run build"
+  publish = ".output/dist"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+
+[functions]
+  directory = ".output/.netlify/functions-internal"
