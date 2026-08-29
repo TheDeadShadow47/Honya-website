@@ -7,13 +7,13 @@ export const siteConfig = {
   tagline: "Read more. Wait less.",
   description:
     "A lightweight, offline-first novel reader powered by the LNReader-compatible extension ecosystem.",
-  version: "v1.3.0",
+  version: "v1.4.0",
   github: "https://github.com/TheDeadShadow47/Honya",
   developer: "TheDeadShadow47",
   developerUrl: "https://github.com/TheDeadShadow47",
   releases: "https://github.com/TheDeadShadow47/Honya/releases",
   /** Verified release asset for the current version. */
-  apk: "https://github.com/TheDeadShadow47/Honya/releases/download/v1.3.0/Honya-v1.3.0.apk",
+  apk: "https://github.com/TheDeadShadow47/Honya/releases/download/v1.4.0/Honya-v1.4.0.apk",
   lnreader: "https://github.com/LNReader/lnreader",
   license: "MIT",
 } as const;

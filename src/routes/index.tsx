@@ -9,6 +9,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { Petals } from "@/components/site/Petals";
 import { Phone } from "@/components/site/Phone";
 import { Reveal } from "@/components/site/Reveal";
+import { ThemeShowcase } from "@/components/site/ThemeShowcase";
 import { siteConfig } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
@@ -19,14 +20,14 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Honya is a lightweight, offline-first web novel reader for Android. Add your own LNReader-compatible plugin repositories, download chapters, and keep your reading progress in sync.",
+          "Honya is a lightweight, offline-first web novel reader for Android. Add your own LNReader-compatible plugin repositories, download chapters in the background with a full Download Manager, and personalize the app with 15 themes and 5 languages.",
       },
       { name: "theme-color", content: "#000000" },
       { property: "og:title", content: "Honya — A Lightweight Novel Reader" },
       {
         property: "og:description",
         content:
-          "Offline-first novel reading with the LNReader-compatible extension ecosystem. Free and open source.",
+          "Offline-first novel reading with a full Download Manager, 15 themes and 5 languages. Free and open source.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -94,14 +95,37 @@ const FEATURES = [
     icon: "M6 4h9l3 3v13H6z M9 9h6M9 13h6",
   },
   {
-    title: "Three languages",
-    body: "English, العربية and Français, with a right-to-left app layout for Arabic.",
-    icon: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3.5 3 14.5 0 18",
+    title: "Library management",
+    body: "Track every novel you follow in one place, with unread badges and progress at a glance.",
+    icon: "M4 5a2 2 0 0 1 2-2h9v18H6a2 2 0 0 1-2-2ZM15 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3",
   },
   {
-    title: "Six themes",
-    body: "Honya Sakura, Midnight, Daylight, Onyx, Forest and Blossom — plus independent reader backgrounds.",
-    icon: "M12 3a9 9 0 1 0 1 17.9c1.5-.2 1.3-2.2.2-2.9-1.3-.8-.7-2.5.8-2.5H17a4 4 0 0 0 4-4 8.5 8.5 0 0 0-9-8.5z",
+    title: "Search",
+    body: "Find a novel across your installed sources without leaving the library.",
+    icon: "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM21 21l-4.3-4.3",
+  },
+];
+
+const POWER_FEATURES = [
+  {
+    title: "Notifications",
+    body: "Download progress, library update results and other background activity surface right in Android's notification shade.",
+    icon: "M9 17a3 3 0 1 0 6 0M5 17h14l-1.4-2.8A6 6 0 0 1 17 11V9a5 5 0 0 0-10 0v2a6 6 0 0 1-.6 3.2Z",
+  },
+  {
+    title: "Library updates",
+    body: "Update your whole library automatically or trigger a manual refresh — with clear progress even on large libraries.",
+    icon: "M4 4v6h6M20 20v-6h-6M5 15a8 8 0 0 0 14-4M19 9A8 8 0 0 0 5 13",
+  },
+  {
+    title: "History",
+    body: "History joins Library, Updates and Catalogs in the main navigation, so returning to a recent chapter is one tap away.",
+    icon: "M12 7v5l3 3M12 3a9 9 0 1 0 9 9",
+  },
+  {
+    title: "Chapter management",
+    body: "Long-press to multi-select, Select All or Select All Except This Chapter, then bulk download or mark — with filtering, sorting and display options that persist.",
+    icon: "M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2",
   },
 ];
 
@@ -165,12 +189,21 @@ function Landing() {
             <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
               <div>
                 <Reveal>
+                  <a
+                    href="#whats-new"
+                    className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-surface/60 px-4 py-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+                  >
+                    Honya {siteConfig.version} is here
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </Reveal>
+                <Reveal delay={40}>
                   <img
                     src={icon}
                     alt="Honya app icon"
                     width={80}
                     height={80}
-                    className="float-soft size-20 rounded-2xl border border-primary/20 shadow-[0_20px_60px_-20px_rgba(237,141,176,0.5)]"
+                    className="float-soft mt-6 size-20 rounded-2xl border border-primary/20 shadow-[0_20px_60px_-20px_rgba(237,141,176,0.5)]"
                   />
                 </Reveal>
                 <Reveal delay={80}>
@@ -212,6 +245,24 @@ function Landing() {
                     Android APK · MIT licensed · No account, no tracking
                   </p>
                 </Reveal>
+                <Reveal delay={360}>
+                  <p className="mt-8 flex flex-wrap gap-x-2 gap-y-1 text-xs text-muted-foreground/80">
+                    {[
+                      "15 themes",
+                      "5 languages",
+                      "Offline reading",
+                      "Background downloads",
+                      "Download Manager",
+                      "In-app updates",
+                      "Plugin ecosystem",
+                    ].map((t, i, arr) => (
+                      <span key={t}>
+                        {t}
+                        {i < arr.length - 1 && <span className="ml-2 text-primary/40">·</span>}
+                      </span>
+                    ))}
+                  </p>
+                </Reveal>
               </div>
 
               <Reveal delay={200} className="relative">
@@ -231,6 +282,52 @@ function Landing() {
             </div>
           </div>
         </section>
+
+        {/* WHAT'S NEW */}
+        <Section id="whats-new" className="border-t border-primary/10">
+          <div className="panel relative overflow-hidden p-8 sm:p-12">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-24 -bottom-24 size-72 rounded-full bg-primary/10 blur-[90px]"
+            />
+            <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <Reveal>
+                <p className="eyebrow">Honya {siteConfig.version}</p>
+                <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                  A step forward for downloads, personalization and reliability.
+                </h2>
+                <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+                  This release focuses on making large libraries easier to manage, adds substantial
+                  personalization, and modernizes the app underneath it all.
+                </p>
+              </Reveal>
+              <Reveal delay={100}>
+                <ul className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
+                  {[
+                    "Background downloads with queues",
+                    "A dedicated Download Manager",
+                    "Automatic & manual library updates",
+                    "In-app APK updates",
+                    "A new History tab",
+                    "Advanced chapter management",
+                    "15 built-in themes",
+                    "German & Italian localization",
+                    "Performance improvements",
+                    "Expo SDK 57 modernization",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 size-1.5 shrink-0 rounded-full bg-primary"
+                      />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
+          </div>
+        </Section>
 
         {/* SCREENSHOTS */}
         <Section id="screenshots" className="border-t border-primary/10">
@@ -298,6 +395,69 @@ function Landing() {
               </Reveal>
             ))}
           </ul>
+        </Section>
+
+        {/* DOWNLOADS & POWER FEATURES */}
+        <Section id="downloads" className="border-t border-primary/10">
+          <Reveal>
+            <p className="eyebrow">Downloads</p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">
+              Built for libraries with hundreds of chapters.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Downloads now run as a proper background job — queued, processed in sequence, and
+              persisted even while Honya isn&apos;t in the foreground.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div className="panel h-full p-8">
+                <Icon d="M12 3 3 8l9 5 9-5-9-5ZM3 12l9 5 9-5M3 16l9 5 9-5" />
+                <h3 className="mt-4 text-xl font-semibold">Download Manager</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  See every active and queued download in one place. Track progress in real time,
+                  pause or cancel individual chapters, and manage large batches without losing track
+                  of what&apos;s left.
+                </p>
+                <ul className="mt-6 space-y-2.5 text-sm text-muted-foreground">
+                  {[
+                    "Active and queued downloads at a glance",
+                    "Pause and cancel anytime",
+                    "Built for large batches of chapters",
+                    "Stays in sync with your library",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 size-1.5 shrink-0 rounded-full bg-primary"
+                      />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {POWER_FEATURES.map((f, i) => (
+                <Reveal key={f.title} delay={i * 60}>
+                  <div className="panel h-full p-6 transition-colors hover:border-primary/40">
+                    <Icon d={f.icon} />
+                    <h3 className="mt-4 text-base font-semibold">{f.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          <Reveal delay={120}>
+            <p className="mt-6 text-sm text-muted-foreground">
+              Chapter lists, filtering and read/download syncing are noticeably smoother, even in
+              large libraries.
+            </p>
+          </Reveal>
         </Section>
 
         {/* EXTENSION ECOSYSTEM */}
@@ -380,17 +540,38 @@ function Landing() {
           </div>
         </Section>
 
+        {/* THEMES */}
+        <Section id="themes" className="border-t border-primary/10">
+          <Reveal>
+            <p className="eyebrow">Personalization</p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">
+              15 themes. Pick the one that feels like yours.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              From the signature Sakura look to true blacks, warm papers and cool blues — every
+              theme covers the whole app, independent of the reader&apos;s own background presets.
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="mt-10">
+              <ThemeShowcase />
+            </div>
+          </Reveal>
+        </Section>
+
         {/* LANGUAGES */}
         <Section className="border-t border-primary/10">
           <Reveal>
             <p className="eyebrow">Languages</p>
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Read in your language.</h2>
           </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
               { label: "English", note: "Left-to-right" },
-              { label: "العربية", note: "Right-to-left layout", rtl: true },
               { label: "Français", note: "Left-to-right" },
+              { label: "Deutsch", note: "Left-to-right" },
+              { label: "Italiano", note: "Left-to-right" },
+              { label: "العربية", note: "Right-to-left layout", rtl: true },
             ].map((l, i) => (
               <Reveal key={l.label} delay={i * 80}>
                 <div className="panel p-6">
@@ -426,8 +607,9 @@ function Landing() {
               <h2 className="relative mt-3 text-3xl font-bold sm:text-4xl">Built in the open.</h2>
               <p className="relative mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
                 Honya is developed publicly by {siteConfig.developer} and released under the{" "}
-                {siteConfig.license} license. It is built with React Native and Expo, stores
-                everything locally in SQLite, and has no backend of its own.
+                {siteConfig.license} license. It is built with React Native and Expo — recently
+                modernized to Expo SDK 57 — stores everything locally in SQLite, and has no backend
+                of its own.
               </p>
               <div className="relative mt-8 flex flex-wrap gap-3">
                 <a
@@ -450,6 +632,36 @@ function Landing() {
               </div>
             </div>
           </Reveal>
+        </Section>
+
+        {/* IN-APP UPDATES */}
+        <Section className="border-t border-primary/10">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <Reveal>
+              <p className="eyebrow">Convenience</p>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Updates without the detour.</h2>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+                Honya checks for newer releases, lets you know when one is available, and downloads
+                the new APK from inside the app with visible progress — ready to install directly on
+                Android.
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="panel mx-auto w-full max-w-sm p-6">
+                <div className="flex items-center gap-3">
+                  <img src={icon} alt="" className="size-10 rounded-xl" />
+                  <div>
+                    <p className="text-sm font-semibold">Update available</p>
+                    <p className="text-xs text-muted-foreground">Honya {siteConfig.version}</p>
+                  </div>
+                </div>
+                <div className="mt-5 h-2 w-full overflow-hidden rounded-full bg-surface-2">
+                  <div className="h-full w-2/3 rounded-full bg-primary" />
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">Downloading update…</p>
+              </div>
+            </Reveal>
+          </div>
         </Section>
 
         {/* DOWNLOAD */}

@@ -4,7 +4,8 @@ import { siteConfig } from "@/lib/site-config";
 
 const LINKS = [
   { href: "#features", label: "Features" },
-  { href: "#screenshots", label: "Screenshots" },
+  { href: "#downloads", label: "Downloads" },
+  { href: "#themes", label: "Themes" },
   { href: "#about", label: "About" },
 ];
 
