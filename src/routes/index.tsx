@@ -294,26 +294,25 @@ function Landing() {
               <Reveal>
                 <p className="eyebrow">Honya {siteConfig.version}</p>
                 <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-                  A step forward for downloads, personalization and reliability.
+                  An updater that finally knows what you already have.
                 </h2>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
-                  This release focuses on making large libraries easier to manage, adds substantial
-                  personalization, and modernizes the app underneath it all.
+                  A focused maintenance release dedicated to the in-app updater. Honya now
+                  reconciles its saved update state with the version you actually have installed, so
+                  updates behave correctly across restarts and upgrades.
                 </p>
               </Reveal>
               <Reveal delay={100}>
                 <ul className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
                   {[
-                    "Background downloads with queues",
-                    "A dedicated Download Manager",
-                    "Automatic & manual library updates",
-                    "In-app APK updates",
-                    "A new History tab",
-                    "Advanced chapter management",
-                    "15 built-in themes",
-                    "German & Italian localization",
-                    "Performance improvements",
-                    "Expo SDK 57 modernization",
+                    'Fixed updates stuck as "Ready to Install"',
+                    "Clears stale downloaded APK state after install",
+                    "Removes obsolete APK files when no longer needed",
+                    "Clears stale latest-release state once caught up",
+                    "Reconciles skipped-version state",
+                    "Keeps genuinely newer downloaded updates",
+                    "Cleanup failures never block app startup",
+                    "No unrelated feature or UI changes",
                   ].map((t) => (
                     <li key={t} className="flex gap-3">
                       <span
