@@ -293,26 +293,24 @@ function Landing() {
             <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <Reveal>
                 <p className="eyebrow">Honya {siteConfig.version}</p>
-                <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-                  An updater that finally knows what you already have.
-                </h2>
+                <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Read. Listen. Keep reading.</h2>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
-                  A focused maintenance release dedicated to the in-app updater. Honya now
-                  reconciles its saved update state with the version you actually have installed, so
-                  updates behave correctly across restarts and upgrades.
+                  {siteConfig.version} makes the reading experience more reliable: listen to
+                  chapters with Text-to-Speech, get a more dependable in-app updater, and cleaner
+                  chapter text everywhere.
                 </p>
               </Reveal>
               <Reveal delay={100}>
                 <ul className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
                   {[
-                    'Fixed updates stuck as "Ready to Install"',
-                    "Clears stale downloaded APK state after install",
-                    "Removes obsolete APK files when no longer needed",
-                    "Clears stale latest-release state once caught up",
-                    "Reconciles skipped-version state",
-                    "Keeps genuinely newer downloaded updates",
-                    "Cleanup failures never block app startup",
-                    "No unrelated feature or UI changes",
+                    "Text-to-Speech in the reader",
+                    "Listen, pause, resume and stop",
+                    "Chunked speech for smoother playback",
+                    "More reliable update detection",
+                    "Background update checking",
+                    "Installed versions no longer shown as available",
+                    "Cleaner chapter text, no stray undefined",
+                    "Better offline handling of local chapters",
                   ].map((t) => (
                     <li key={t} className="flex gap-3">
                       <span
